@@ -1,32 +1,45 @@
-<nav>
-  <ul class="nav-link">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#home">About</a></li>
-    <li><a href="#home">Contact</a></li>
-  </ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+  <div class="container">
+    <a class="navbar-brand" href="/">Corndog Alle</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon" />
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="register">Register</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
 </nav>
 
 <style>
-  nav {
-    height: 10vh;
-    width: 100%;
-    background-color: rgb(48, 216, 216);
-  }
-  .nav-link {
-    list-style: none;
+  /* optional navbar */
+  /* .navbar {
+    background-color: rgb(25, 119, 122);
+  } */
+  a {
     text-decoration: none;
-    display: flex;
-    justify-content: space-around;
-    width: 50%;
-    height: 100%;
-    align-items: center;
-    margin-left: auto;
-  }
-
-  .nav-link li a {
-    text-decoration: none;
-    justify-content: space-around;
-    color: white;
-    font-size: 18px;
   }
 </style>
