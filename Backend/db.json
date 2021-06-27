@@ -1,0 +1,123 @@
+{
+    "categories" : [
+        {
+            "id" : 1, 
+            "name" : "Promo"
+        },
+        {
+            "id" : 2, 
+            "name" : "Corndog"
+        },
+        {
+            "id" : 3, 
+            "name" : "Drinks"
+        },
+        {
+            "id" : 4, 
+            "name" : "Snacks"
+        }
+    ],
+    "products" : [
+        {
+          "id" : 1,
+          "name" : "Corndog Mozarella",
+          "price" : 17000,
+          "is_ready" : true,
+          "img" : "mozarella.jpg",
+          "category" : {
+              "id" : 1,
+              "name" : "Corndog"
+          }
+        },
+        {
+          "id" : 2,
+          "name" : "Corndog Matcha",
+          "price" : 17000,
+          "is_ready" : true,
+          "img" : "matcha.jpg",
+          "category" : {
+              "id" : 1,
+              "name" : "Corndog"
+          }
+        },
+        {
+          "id" : 3,
+          "name" : "Corndog Dark Choco",
+          "price" : 15000,
+          "is_ready" : true,
+          "img" : "darkchoco.jpg",
+          "category" : {
+              "id" : 1,
+              "name" : "Corndog"
+          }
+        },
+        {
+            "id" : 4,
+            "name" : "Coca Cola",
+            "price" : 12000,
+            "is_ready" : true,
+            "img" : "cola.jpg",
+            "category" : {
+                "id" : 1,
+                "name" : "Drinks"
+            } 
+        },
+        {
+          "id" : 5,
+          "name" : "Corndog Tiramisu",
+          "price" : 15000,
+          "is_ready" : true,
+          "img" : "tiramisu.jpg",
+          "category" : {
+              "id" : 1,
+              "name" : "Corndog"
+          }
+        },
+        {
+            "id" : 6,
+            "name" : "Corndog Sosis",
+            "price" : 17000,
+            "is_ready" : true,
+            "img" : "sosis.jpg",
+            "category" : {
+                "id" : 1,
+                "name" : "Corndog"
+            }
+          },
+          {
+            "id" : 7,
+            "name" : "Corndog Mozarella",
+            "price" : 17000,
+            "is_ready" : true,
+            "img" : "conrdog_mozarella.jpg",
+            "category" : {
+                "id" : 1,
+                "name" : "Corndog"
+            }
+          },
+          {
+            "id" : 8,
+            "name" : "Corndog Mozarella",
+            "price" : 17000,
+            "is_ready" : true,
+            "img" : "conrdog_mozarella.jpg",
+            "category" : {
+                "id" : 1,
+                "name" : "Corndog"
+            }
+          },
+          {
+            "id" : 10,
+            "name" : "Corndog Mozarella",
+            "price" : 17000,
+            "is_ready" : true,
+            "img" : "conrdog_mozarella.jpg",
+            "category" : {
+                "id" : 1,
+                "name" : "Corndog"
+            }
+          }
+    ],
+    "keranjang" : [],
+    "pesanan" : []
+}
