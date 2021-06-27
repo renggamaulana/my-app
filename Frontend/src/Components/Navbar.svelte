@@ -39,6 +39,10 @@
   /* .navbar {
     background-color: rgb(25, 119, 122);
   } */
+  .navbar-brand {
+    font-family: "Caveat", cursive;
+    font-size: 1.5rem;
+  }
   a {
     text-decoration: none;
   }

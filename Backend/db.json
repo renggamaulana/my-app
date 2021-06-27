@@ -2,7 +2,7 @@
     "categories" : [
         {
             "id" : 1, 
-            "name" : "Promo"
+            "name" : "Food"
         },
         {
             "id" : 2, 
@@ -86,21 +86,21 @@
           },
           {
             "id" : 7,
-            "name" : "Corndog Mozarella",
-            "price" : 17000,
+            "name" : "Kentang Goreng",
+            "price" : 18000,
             "is_ready" : true,
-            "img" : "conrdog_mozarella.jpg",
+            "img" : "kentang.jpg",
             "category" : {
                 "id" : 1,
-                "name" : "Corndog"
+                "name" : "Makanan"
             }
           },
           {
             "id" : 8,
-            "name" : "Corndog Mozarella",
-            "price" : 17000,
+            "name" : "Corndog Tiramisu",
+            "price" : 15000,
             "is_ready" : true,
-            "img" : "conrdog_mozarella.jpg",
+            "img" : "tiramisu.jpg",
             "category" : {
                 "id" : 1,
                 "name" : "Corndog"
@@ -108,10 +108,10 @@
           },
           {
             "id" : 10,
-            "name" : "Corndog Mozarella",
-            "price" : 17000,
+            "name" : "Teh Pucuk",
+            "price" : 5000,
             "is_ready" : true,
-            "img" : "conrdog_mozarella.jpg",
+            "img" : "teh-pucuk.jpg",
             "category" : {
                 "id" : 1,
                 "name" : "Corndog"
