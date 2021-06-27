@@ -3,6 +3,15 @@
   import Category from "../Components/Category.svelte";
   import Navbar from "../components/Navbar.svelte";
   import Products from "../Components/Products.svelte";
+  import axios from "axios";
+
+  const API_URL = "http://localhost:3000/products";
+  let menus = [];
+  const getData = () => {
+    axios.get(API_URL).then((response) => {
+      console.log(response.data);
+    });
+  };
 </script>
 
 <!-- Navbar -->
@@ -22,4 +31,5 @@
     </div>
   </div>
 </div>
+<button on:click={getData}>GET DATA</button>
 <!-- Akhir Main Page -->
