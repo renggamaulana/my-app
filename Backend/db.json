@@ -23,32 +23,32 @@
           "name" : "Corndog Mozarella",
           "price" : 17000,
           "is_ready" : true,
-          "img" : "mozarella.jpg",
+          "img" : "moza.jpg",
           "category" : {
               "id" : 1,
-              "name" : "Corndog"
+              "name" : "corndog"
           }
         },
         {
           "id" : 2,
-          "name" : "Corndog Matcha",
+          "name" : "Corndog Hotang",
           "price" : 17000,
           "is_ready" : true,
-          "img" : "matcha.jpg",
+          "img" : "hotang.jpg",
           "category" : {
               "id" : 1,
-              "name" : "Corndog"
+              "name" : "corndog"
           }
         },
         {
           "id" : 3,
-          "name" : "Corndog Dark Choco",
+          "name" : "Corndog Choco Chips",
           "price" : 15000,
           "is_ready" : true,
-          "img" : "darkchoco.jpg",
+          "img" : "chocochips.jpg",
           "category" : {
               "id" : 1,
-              "name" : "Corndog"
+              "name" : "corndog"
           }
         },
         {
@@ -59,18 +59,18 @@
             "img" : "cola.jpg",
             "category" : {
                 "id" : 1,
-                "name" : "Drinks"
+                "name" : "drinks"
             } 
         },
         {
           "id" : 5,
-          "name" : "Corndog Tiramisu",
-          "price" : 15000,
+          "name" : "Air Mineral",
+          "price" : 3000,
           "is_ready" : true,
-          "img" : "tiramisu.jpg",
+          "img" : "aqua.jpg",
           "category" : {
               "id" : 1,
-              "name" : "Corndog"
+              "name" : "drinks"
           }
         },
         {
@@ -81,7 +81,7 @@
             "img" : "sosis.jpg",
             "category" : {
                 "id" : 1,
-                "name" : "Corndog"
+                "name" : "corndog"
             }
           },
           {
@@ -92,29 +92,29 @@
             "img" : "kentang.jpg",
             "category" : {
                 "id" : 1,
-                "name" : "Makanan"
+                "name" : "food"
             }
           },
           {
             "id" : 8,
-            "name" : "Corndog Tiramisu",
+            "name" : "Combo Hemat",
             "price" : 15000,
             "is_ready" : true,
-            "img" : "tiramisu.jpg",
+            "img" : "paket1.jpg",
             "category" : {
                 "id" : 1,
-                "name" : "Corndog"
+                "name" : "corndog"
             }
           },
           {
             "id" : 10,
             "name" : "Teh Pucuk",
-            "price" : 5000,
+            "price" : 6000,
             "is_ready" : true,
             "img" : "teh-pucuk.jpg",
             "category" : {
                 "id" : 1,
-                "name" : "Corndog"
+                "name" : "drinks"
             }
           }
     ],
