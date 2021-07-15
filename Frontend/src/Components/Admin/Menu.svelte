@@ -55,7 +55,7 @@
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
         <li class="nav-item menu-open">
-          <a href="#" class="nav-link active">
+          <a href="admin" class="nav-link active">
             <i class="nav-icon fas fa-tachometer-alt" />
             <p>
               Dashboard
@@ -66,13 +66,19 @@
             <li class="nav-item">
               <a href="profile" class="nav-link ">
                 <i class="fa fa-user nav-icon" />
-                <p>Profile</p>
+                <p>Profil</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="products" class="nav-link">
+                <i class="fa fa-cubes nav-icon" />
+                <p>Produk</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="orders" class="nav-link">
                 <i class="fa fa-shopping-cart nav-icon" />
-                <p>Orders</p>
+                <p>Pesanan</p>
               </a>
             </li>
             <li class="nav-item">
