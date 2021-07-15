@@ -1,0 +1,223 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "corndog"
+    },
+    {
+      "id": 2,
+      "name": "makanan"
+    },
+    {
+      "id": 3,
+      "name": "minuman"
+    },
+    {
+      "id": 4,
+      "name": "cemilan"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Corndog Mozarella",
+      "price": 17000,
+      "is_ready": true,
+      "img": "moza.jpg",
+      "category": {
+        "id": 1,
+        "name": "corndog"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Corndog Hotang",
+      "price": 17000,
+      "is_ready": true,
+      "img": "hotang.jpg",
+      "category": {
+        "id": 1,
+        "name": "corndog"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Corndog Choco Chips",
+      "price": 15000,
+      "is_ready": true,
+      "img": "chocochips.jpg",
+      "category": {
+        "id": 1,
+        "name": "corndog"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Coca Cola",
+      "price": 12000,
+      "is_ready": true,
+      "img": "cola.jpg",
+      "category": {
+        "id": 1,
+        "name": "minuman"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Air Mineral",
+      "price": 3000,
+      "is_ready": true,
+      "img": "aqua.jpg",
+      "category": {
+        "id": 1,
+        "name": "minuman"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Corndog Sosis",
+      "price": 17000,
+      "is_ready": true,
+      "img": "sosis.jpg",
+      "category": {
+        "id": 1,
+        "name": "corndog"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Kentang Goreng",
+      "price": 18000,
+      "is_ready": true,
+      "img": "kentang.jpg",
+      "category": {
+        "id": 1,
+        "name": "cemilan"
+      }
+    },
+    {
+      "id": 8,
+      "name": "Combo Hemat",
+      "price": 15000,
+      "is_ready": true,
+      "img": "paket1.jpg",
+      "category": {
+        "id": 1,
+        "name": "corndog"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Teh Pucuk",
+      "price": 6000,
+      "is_ready": true,
+      "img": "teh-pucuk.jpg",
+      "category": {
+        "id": 1,
+        "name": "minuman"
+      }
+    },
+    {
+      "id": 10,
+      "name": "Tteokbokki Extra Mozarella",
+      "price": 28000,
+      "is_ready": true,
+      "img": "tteokbokki-moza.jpg",
+      "category": {
+        "id": 1,
+        "name": "makanan"
+      }
+    },
+    {
+      "id": 11,
+      "name": "Rabokki",
+      "price": 40000,
+      "is_ready": true,
+      "img": "rabokki.jpg",
+      "category": {
+        "id": 1,
+        "name": "makanan"
+      }
+    },
+    {
+      "id": 12,
+      "name": "Tteokbokki",
+      "price": 30000,
+      "is_ready": true,
+      "img": "tteokbokki.jpg",
+      "category": {
+        "id": 1,
+        "name": "makanan"
+      }
+    }
+  ],
+  "cart": [
+    {
+      "jumlah": 1,
+      "total_harga": 15000,
+      "product": {
+        "id": 3,
+        "name": "Corndog Choco Chips",
+        "price": 15000,
+        "is_ready": true,
+        "img": "chocochips.jpg",
+        "category": {
+          "id": 1,
+          "name": "corndog"
+        }
+      },
+      "id": 1
+    },
+    {
+      "jumlah": 1,
+      "total_harga": 17000,
+      "product": {
+        "id": 2,
+        "name": "Corndog Hotang",
+        "price": 17000,
+        "is_ready": true,
+        "img": "hotang.jpg",
+        "category": {
+          "id": 1,
+          "name": "corndog"
+        }
+      },
+      "id": 2
+    },
+    {
+      "jumlah": 1,
+      "total_harga": 15000,
+      "product": {
+        "id": 3,
+        "name": "Corndog Choco Chips",
+        "price": 15000,
+        "is_ready": true,
+        "img": "chocochips.jpg",
+        "category": {
+          "id": 1,
+          "name": "corndog"
+        }
+      },
+      "id": 3
+    },
+    {
+      "jumlah": 1,
+      "total_harga": 18000,
+      "product": {
+        "id": 7,
+        "name": "Kentang Goreng",
+        "price": 18000,
+        "is_ready": true,
+        "img": "kentang.jpg",
+        "category": {
+          "id": 1,
+          "name": "cemilan"
+        }
+      },
+      "id": 4
+    }
+  ],
+  "order": [],
+  "user": [],
+  "transaction": []
+}
