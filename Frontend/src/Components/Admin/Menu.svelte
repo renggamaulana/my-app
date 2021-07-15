@@ -70,7 +70,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="order" class="nav-link">
+              <a href="orders" class="nav-link">
                 <i class="fa fa-shopping-cart nav-icon" />
                 <p>Orders</p>
               </a>

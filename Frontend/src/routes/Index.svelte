@@ -9,6 +9,7 @@
   import ForgotPassword from "../pages/ForgotPassword.svelte";
   import Invoice from "../pages/Invoice.svelte";
   import Profile from "../pages/Profile.svelte";
+  import Orders from "../pages/Orders.svelte";
 
   let page;
 
@@ -21,6 +22,7 @@
   router("/forgot-password", () => (page = ForgotPassword));
   router("/invoice", () => (page = Invoice));
   router("/profile", () => (page = Profile));
+  router("/orders", () => (page = Orders));
 
   router.start();
 </script>
