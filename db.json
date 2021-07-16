@@ -151,72 +151,7 @@
       }
     }
   ],
-  "cart": [
-    {
-      "jumlah": 1,
-      "total_harga": 15000,
-      "product": {
-        "id": 3,
-        "name": "Corndog Choco Chips",
-        "price": 15000,
-        "is_ready": true,
-        "img": "chocochips.jpg",
-        "category": {
-          "id": 1,
-          "name": "corndog"
-        }
-      },
-      "id": 1
-    },
-    {
-      "jumlah": 1,
-      "total_harga": 17000,
-      "product": {
-        "id": 2,
-        "name": "Corndog Hotang",
-        "price": 17000,
-        "is_ready": true,
-        "img": "hotang.jpg",
-        "category": {
-          "id": 1,
-          "name": "corndog"
-        }
-      },
-      "id": 2
-    },
-    {
-      "jumlah": 1,
-      "total_harga": 15000,
-      "product": {
-        "id": 3,
-        "name": "Corndog Choco Chips",
-        "price": 15000,
-        "is_ready": true,
-        "img": "chocochips.jpg",
-        "category": {
-          "id": 1,
-          "name": "corndog"
-        }
-      },
-      "id": 3
-    },
-    {
-      "jumlah": 1,
-      "total_harga": 18000,
-      "product": {
-        "id": 7,
-        "name": "Kentang Goreng",
-        "price": 18000,
-        "is_ready": true,
-        "img": "kentang.jpg",
-        "category": {
-          "id": 1,
-          "name": "cemilan"
-        }
-      },
-      "id": 4
-    }
-  ],
+  "cart": [],
   "order": [],
   "user": [],
   "transaction": []
