@@ -7,7 +7,7 @@
   let cart = [];
   beforeUpdate(() => {
     axios
-      .get(`${API_URL}cart`)
+      .get(`${API_URL}carts`)
       .then((res) => {
         cart = res.data;
       })
@@ -33,9 +33,9 @@
             alt={listCart.product.name}
           /><br /> -->
           <div class="fw-bold">{listCart.product.name}</div>
-          Rp. {numberWithCommas(listCart.product.price)}
+          Rp. {numberWithCommas(listCart.total_price)}
         </div>
-        <span class="badge bg-primary rounded-pill">{listCart.jumlah}</span>
+        <span class="badge bg-primary rounded-pill">{listCart.quantity}</span>
       </li>
     {/each}
   </ul>

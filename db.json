@@ -151,7 +151,40 @@
       }
     }
   ],
-  "cart": [],
+  "carts": [
+    {
+      "quantity": 2,
+      "total_price": 60000,
+      "product": {
+        "id": 12,
+        "name": "Tteokbokki",
+        "price": 30000,
+        "is_ready": true,
+        "img": "tteokbokki.jpg",
+        "category": {
+          "id": 1,
+          "name": "makanan"
+        }
+      },
+      "id": 1
+    },
+    {
+      "quantity": 2,
+      "total_price": 36000,
+      "product": {
+        "id": 7,
+        "name": "Kentang Goreng",
+        "price": 18000,
+        "is_ready": true,
+        "img": "kentang.jpg",
+        "category": {
+          "id": 1,
+          "name": "cemilan"
+        }
+      },
+      "id": 2
+    }
+  ],
   "order": [],
   "user": [],
   "transaction": []

@@ -5,7 +5,7 @@
   import swal from "sweetalert";
 
   let menus = [];
-  let cart = [];
+  let carts = [];
 
   // Did Mount Component
   // Binding Category
@@ -33,9 +33,9 @@
   // Cart
 
   axios
-    .get(`${API_URL}cart`)
+    .get(`${API_URL}carts`)
     .then((res) => {
-      cart = res.data;
+      carts = res.data;
     })
     .catch((err) => {
       console.log(err);
@@ -43,72 +43,54 @@
 
   // Add to Cart
 
-  const addCart = (value) => {
+  const addCart = (menu) => {
     axios
-      .get(`${API_URL}cart/product.id=${value.id}`)
+      .get(`${API_URL}carts?product.id=${menu.id}`)
       .then((res) => {
+        console.log(menu, res);
         if (res.data.length === 0) {
           const cart = {
-            jumlah: 1,
-            total_harga: value.price,
-            product: value,
+            quantity: 1,
+            total_price: menu.price,
+            product: menu,
           };
 
           axios
-            .post(`${API_URL}cart`, cart)
+            .post(`${API_URL}carts`, cart)
             .then((res) => {
               swal({
                 title: "Sukses Masuk Keranjang",
-                text: "Sukses Masuk Keranjang " + cart.product.name,
+                text: "Sukses Masuk Keranjang" + cart.product.name,
                 icon: "success",
                 button: false,
+                timer: 1500,
               });
             })
-            .catch((err) => {
-              console.log(err);
+            .catch((error) => {
+              console.log(error);
             });
         } else {
           const cart = {
-            jumlah: res.data[0].jumlah + 1,
-            total_harga: res.data[0].total_harga + value.price,
-            product: value,
+            quantity: res.data[0].quantity + 1,
+            total_price: res.data[0].total_price + menu.price,
+            product: menu,
           };
+          console.log(cart, res.data[0].total_price + menu.price);
           axios
-            .put(API_URL + "cart/" + res.data[0].id, cart)
+            .put(`${API_URL}carts/${res.data[0].id}`, cart)
             .then((res) => {
               swal({
                 title: "Sukses Masuk Keranjang",
-                text: "Sukses Masuk Keranjang " + cart.product.name,
+                text: "Sukses Masuk Keranjang" + cart.product.name,
                 icon: "success",
                 button: false,
-                timer: 1400,
+                timer: 1500,
               });
             })
-            .catch((err) => {
-              console.log(err);
+            .catch((error) => {
+              console.log(error);
             });
         }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    const cart = {
-      jumlah: 1,
-      total_harga: value.price,
-      product: value,
-    };
-
-    axios
-      .post(`${API_URL}cart`, cart)
-      .then((res) => {
-        swal({
-          title: "Sukses Masuk Keranjang",
-          text: "Sukses Masuk Keranjang " + cart.product.name,
-          icon: "success",
-          button: false,
-          timer: 1400,
-        });
       })
       .catch((err) => {
         console.log(err);
