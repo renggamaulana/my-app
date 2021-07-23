@@ -43,6 +43,10 @@
     font-family: "Caveat", cursive;
     font-size: 1.5rem;
   }
+
+  .navbar {
+    z-index: 2;
+  }
   a {
     text-decoration: none;
   }

@@ -22,7 +22,7 @@
 
   // Menu home(default)
   axios
-    .get(`${API_URL}products?category.name=corndog`)
+    .get(`${API_URL}products?category.name=Corndog`)
     .then((res) => {
       menus = res.data;
     })
@@ -114,7 +114,7 @@
             alt="..."
           />
           <div class="card-body">
-            <h6 class="card-title">{menu.name}</h6>
+            <h5 class="card-title">{menu.name}</h5>
             <p class="card-text">Rp. {numberWithCommas(menu.price)}</p>
             <button
               class="btn btn-warning"
@@ -130,6 +130,9 @@
 </div>
 
 <style>
+  .card {
+    z-index: 1;
+  }
   .card:hover {
     cursor: pointer;
   }

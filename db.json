@@ -2,19 +2,19 @@
   "categories": [
     {
       "id": 1,
-      "name": "corndog"
+      "name": "Corndog"
     },
     {
       "id": 2,
-      "name": "makanan"
+      "name": "Makanan"
     },
     {
       "id": 3,
-      "name": "minuman"
+      "name": "Minuman"
     },
     {
       "id": 4,
-      "name": "cemilan"
+      "name": "Cemilan"
     }
   ],
   "products": [
@@ -26,7 +26,7 @@
       "img": "moza.jpg",
       "category": {
         "id": 1,
-        "name": "corndog"
+        "name": "Corndog"
       }
     },
     {
@@ -37,7 +37,7 @@
       "img": "hotang.jpg",
       "category": {
         "id": 1,
-        "name": "corndog"
+        "name": "Corndog"
       }
     },
     {
@@ -48,18 +48,18 @@
       "img": "chocochips.jpg",
       "category": {
         "id": 1,
-        "name": "corndog"
+        "name": "Corndog"
       }
     },
     {
       "id": 4,
       "name": "Coca Cola",
-      "price": 12000,
+      "price": 5000,
       "is_ready": true,
       "img": "cola.jpg",
       "category": {
         "id": 1,
-        "name": "minuman"
+        "name": "Minuman"
       }
     },
     {
@@ -70,7 +70,7 @@
       "img": "aqua.jpg",
       "category": {
         "id": 1,
-        "name": "minuman"
+        "name": "Minuman"
       }
     },
     {
@@ -81,7 +81,7 @@
       "img": "sosis.jpg",
       "category": {
         "id": 1,
-        "name": "corndog"
+        "name": "Corndog"
       }
     },
     {
@@ -92,7 +92,7 @@
       "img": "kentang.jpg",
       "category": {
         "id": 1,
-        "name": "cemilan"
+        "name": "Cemilan"
       }
     },
     {
@@ -103,7 +103,7 @@
       "img": "paket1.jpg",
       "category": {
         "id": 1,
-        "name": "corndog"
+        "name": "Corndog"
       }
     },
     {
@@ -114,7 +114,7 @@
       "img": "teh-pucuk.jpg",
       "category": {
         "id": 1,
-        "name": "minuman"
+        "name": "Minuman"
       }
     },
     {
@@ -125,7 +125,7 @@
       "img": "tteokbokki-moza.jpg",
       "category": {
         "id": 1,
-        "name": "makanan"
+        "name": "Makanan"
       }
     },
     {
@@ -136,7 +136,7 @@
       "img": "rabokki.jpg",
       "category": {
         "id": 1,
-        "name": "makanan"
+        "name": "Makanan"
       }
     },
     {
@@ -147,45 +147,12 @@
       "img": "tteokbokki.jpg",
       "category": {
         "id": 1,
-        "name": "makanan"
+        "name": "Makanan"
       }
     }
   ],
-  "carts": [
-    {
-      "quantity": 2,
-      "total_price": 60000,
-      "product": {
-        "id": 12,
-        "name": "Tteokbokki",
-        "price": 30000,
-        "is_ready": true,
-        "img": "tteokbokki.jpg",
-        "category": {
-          "id": 1,
-          "name": "makanan"
-        }
-      },
-      "id": 1
-    },
-    {
-      "quantity": 2,
-      "total_price": 36000,
-      "product": {
-        "id": 7,
-        "name": "Kentang Goreng",
-        "price": 18000,
-        "is_ready": true,
-        "img": "kentang.jpg",
-        "category": {
-          "id": 1,
-          "name": "cemilan"
-        }
-      },
-      "id": 2
-    }
-  ],
-  "order": [],
+  "carts": [],
+  "orders": [],
   "user": [],
   "transaction": []
 }

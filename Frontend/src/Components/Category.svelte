@@ -31,7 +31,19 @@
   {#each categories as category (category.id)}
     <li class="list-group-item" on:click={changeCategory(category.name)}>
       <h6 class:active={isActive}>
-        {category.name}
+        {#if category.name === "Makanan"}
+          <i class="fas fa-utensils mx-2" />
+          {category.name}
+        {:else if category.name === "Minuman"}
+          <i class="fas fa-coffee mx-2" />
+          {category.name}
+        {:else if category.name === "Corndog"}
+          <i class="fas fa-drumstick-bite mx-2" />
+          {category.name}
+        {:else if category.name === "Cemilan"}
+          <i class="fas fa-bread-slice mx-2" />
+          {category.name}
+        {/if}
       </h6>
     </li>
   {/each}

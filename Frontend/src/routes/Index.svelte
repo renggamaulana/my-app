@@ -5,7 +5,7 @@
   import Register from "../pages/Register.svelte";
   import Checkout from "../pages/Checkout.svelte";
   import Admin from "../pages/Admin.svelte";
-  import Order from "../pages/Order.svelte";
+  import Success from "../pages/Success.svelte";
   import ForgotPassword from "../pages/ForgotPassword.svelte";
   import Invoice from "../pages/Invoice.svelte";
   import Profile from "../pages/Profile.svelte";
@@ -17,7 +17,7 @@
   router("/", () => (page = Home));
   router("/login", () => (page = Login));
   router("/register", () => (page = Register));
-  router("/order", () => (page = Order));
+  router("/success", () => (page = Success));
   router("/checkout", () => (page = Checkout));
   router("/admin", () => (page = Admin));
   router("/forgot-password", () => (page = ForgotPassword));

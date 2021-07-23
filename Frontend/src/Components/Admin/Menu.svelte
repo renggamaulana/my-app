@@ -65,8 +65,8 @@
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="profile" class="nav-link ">
-                <i class="fa fa-user nav-icon" />
-                <p>Profil</p>
+                <i class="fas fa-users nav-icon" />
+                <p>Users</p>
               </a>
             </li>
             <li class="nav-item">

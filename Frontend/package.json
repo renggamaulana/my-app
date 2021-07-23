@@ -21,6 +21,7 @@
     "axios": "^0.21.1",
     "page": "^1.11.6",
     "sirv-cli": "^1.0.0",
+    "svelte-history": "0.0.4",
     "sweetalert2": "^11.0.18"
   }
 }
