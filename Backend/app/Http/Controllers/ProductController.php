@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -12,8 +13,10 @@ class ProductController extends Controller
         $product = new Product;
         $product->name = $request->name;
         $product->price = $request->price;
-        $product->quantity = $request->quantity;
         $product->active = $request->active;
+        $product->img = $request->img;
+        $product->category_id = $request->category_id;
+
 
         $product->save();
 
@@ -25,14 +28,44 @@ class ProductController extends Controller
         );
     }
 
-    function get()
+    function get(Request $request)
     {
-        $data = Product::all();
+        // dd($request);
+
+        if ($request->category_name) {
+            $data = DB::table('products as p')->join('categories as c', 'p.category_id', '=', 'c.id')
+                ->select('p.id', 'p.name', 'p.price', 'p.active', 'p.img', 'p.category_id', 'c.name as category_name')
+                ->where('c.name', $request->category_name)
+                ->get();
+        } else {
+            $data = DB::table('products as p')->join('categories as c', 'p.category_id', '=', 'c.id')
+                ->select('p.id', 'p.name', 'p.price', 'p.active', 'p.img', 'p.category_id', 'c.name as category_name')
+                ->get();
+        }
+
+        // $data = Product::all();
+
+        $dataResult = [];
+
+        foreach ($data as $i => $value) {
+            $dataResult[$i] = [
+                'id'    => $value->id,
+                'name'    => $value->name,
+                'price'    => $value->price,
+                'active'    => $value->active,
+                'img'    => $value->img,
+                'category'  => [
+                    'id' => $value->category_id,
+                    'name' => $value->category_name
+                ]
+            ];
+        }
+
 
         return response()->json(
             [
                 "message" => "Success!",
-                "data" => $data
+                "data" => $dataResult
             ]
         );
     }

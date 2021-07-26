@@ -1,8 +1,9 @@
 <script>
-  let cod = false;
+  // let display = block;
+  let metodePembayaran = "";
 
-  const handlePayment = () => {
-    cod = true;
+  const handlePayment = (value) => {
+    console.log(value);
   };
 </script>
 
@@ -50,8 +51,8 @@
             <span class="text-success">−Rp.5</span>
           </li>
           <li class="list-group-item d-flex justify-content-between">
-            <span>Total (USD)</span>
-            <strong>Rp.20</strong>
+            <span>Total (IDR)</span>
+            <strong>Rp.72.000</strong>
           </li>
         </ul>
 
@@ -192,51 +193,55 @@
           <div class="col-md-4">
             <label for="state" class="form-label">Pilih metode pembayaran</label
             >
-            <select class="form-select" id="state" required>
+            <select
+              class="form-select"
+              id="state"
+              bind:value={metodePembayaran}
+              required
+            >
               <option value="">Pilih...</option>
-              <option on:click={handlePayment}>Bayar ditempat</option>
-              <option>Pembayaran Virtual</option>
+              <option value="cod">Bayar ditempat</option>
+              <option value="pembayaranVirtual">Pembayaran Virtual</option>
             </select>
             <div class="invalid-feedback">Please provide a valid state.</div>
           </div>
 
-          {#if cod === true}
-            <p>Bayar ditempat</p>
-          {:else}
-            <div class="my-3">
-              <div class="form-check">
-                <input
-                  id="credit"
-                  name="paymentMethod"
-                  type="radio"
-                  class="form-check-input"
-                  checked
-                  required
-                />
-                <label class="form-check-label" for="credit">Credit card</label>
-              </div>
-              <div class="form-check">
-                <input
-                  id="debit"
-                  name="paymentMethod"
-                  type="radio"
-                  class="form-check-input"
-                  required
-                />
-                <label class="form-check-label" for="debit">Debit card</label>
-              </div>
-              <div class="form-check">
-                <input
-                  id="paypal"
-                  name="paymentMethod"
-                  type="radio"
-                  class="form-check-input"
-                  required
-                />
-                <label class="form-check-label" for="paypal">PayPal</label>
-              </div>
+          <div
+            class="my-3"
+            style="display: {metodePembayaran == 'cod' ? 'none' : 'block'}"
+          >
+            <div class="form-check">
+              <input
+                id="credit"
+                name="paymentMethod"
+                type="radio"
+                class="form-check-input"
+                checked
+                required
+              />
+              <label class="form-check-label" for="credit">Credit card</label>
             </div>
-          {/if}
+            <div class="form-check">
+              <input
+                id="debit"
+                name="paymentMethod"
+                type="radio"
+                class="form-check-input"
+                required
+              />
+              <label class="form-check-label" for="debit">Debit card</label>
+            </div>
+            <div class="form-check">
+              <input
+                id="paypal"
+                name="paymentMethod"
+                type="radio"
+                class="form-check-input"
+                required
+              />
+              <label class="form-check-label" for="paypal">PayPal</label>
+            </div>
+          </div>
           <div class="row gy-3">
             <div class="col-md-6">
               <label for="cc-name" class="form-label">Name on card</label>
@@ -292,8 +297,8 @@
 
           <hr class="my-4" />
 
-          <button class="w-100 btn btn-primary btn-lg" type="submit"
-            >Continue to checkout</button
+          <a href="/success" class="w-100 btn btn-primary btn-lg" type="submit"
+            >Bayar</a
           >
         </form>
       </div>
@@ -323,5 +328,8 @@
     top: 50px;
     left: 60px;
     font-size: larger;
+  }
+  a.btn {
+    color: white;
   }
 </style>

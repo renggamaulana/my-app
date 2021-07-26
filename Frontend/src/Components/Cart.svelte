@@ -78,10 +78,10 @@
         >
       </h5>
       <a
-        href="success"
+        href="checkout"
         class="btn btn-warning"
         on:click={() => submitTotal(totalPay)}
-        ><strong> <i class="bi bi-cart4 mx-1" />Bayar</strong></a
+        ><strong> <i class="bi bi-cart4 mx-1" />Checkout</strong></a
       >
     </div>
   </div>

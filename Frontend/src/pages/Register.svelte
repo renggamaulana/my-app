@@ -66,7 +66,7 @@
                   value="agree"
                 />
                 <label for="agreeTerms">
-                  Saya setuju dengan <a href="#">persyaratan </a>
+                  Saya setuju dengan <a href="term">persyaratan </a>
                 </label>
               </div>
             </div>

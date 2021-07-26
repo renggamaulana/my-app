@@ -14,6 +14,7 @@
       .get(`${API_URL}products?category.name=${value}`)
       .then((res) => {
         menus = res.data;
+        console.log(menus);
       })
       .catch((err) => {
         console.log(err);
@@ -22,9 +23,12 @@
 
   // Menu home(default)
   axios
-    .get(`${API_URL}products?category.name=Corndog`)
+    .get(`${API_URL}products?category.name=Corndog`) // laravel_api -> category_name
     .then((res) => {
       menus = res.data;
+      console.log(res.data);
+      // menus = res.data.data; //response menggunakan laravel api
+      // console.log(1, res.data.data);
     })
     .catch((err) => {
       console.log(err);
@@ -35,7 +39,7 @@
   axios
     .get(`${API_URL}carts`)
     .then((res) => {
-      carts = res.data;
+      carts = res.data.data;
     })
     .catch((err) => {
       console.log(err);
