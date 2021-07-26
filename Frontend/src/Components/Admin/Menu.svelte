@@ -23,7 +23,7 @@
         />
       </div>
       <div class="info">
-        <a href="profile" class="d-block">Alexander Pierce</a>
+        <a href="profile" class="d-block">Admin</a>
       </div>
     </div>
 

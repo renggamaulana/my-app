@@ -2,11 +2,54 @@
   import axios from "axios";
   import { API_URL } from "../utils/utils.js";
   import { numberWithCommas } from "../utils/utils";
-  import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
-  import { push, replace, go, goBack, goForward } from "svelte-history";
+  import { beforeUpdate } from "svelte";
+  import { push } from "svelte-history";
+  import {
+    Button,
+    Modal,
+    ModalBody,
+    ModalFooter,
+    ModalHeader,
+  } from "sveltestrap";
 
   let cart = [];
   let totalPay = 0;
+
+  let quantity = 0;
+  let cartDetail = false;
+  let note = "";
+  let totalPrice = 0;
+
+  let open = false;
+  const toggle = (listCart) => {
+    open = !open;
+    cartDetail = listCart;
+    (quantity = listCart.quantity), (note = listCart.note);
+    totalPrice = listCart.total_price;
+    console.log(listCart);
+  };
+
+  const plus = () => {
+    quantity = quantity + 1;
+    totalPrice = cartDetail.product.price * (quantity + 1);
+  };
+
+  const minus = () => {
+    if (quantity !== 1) {
+      quantity = quantity - 1;
+      totalPrice = cartDetail.product.price * (quantity - 1);
+    }
+  };
+
+  const changeHandler = (event) => {
+    note = event.target.value;
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    console.log(note);
+  };
 
   // const numbers = [75000, 34000];
   // const sum = numbers.reduce(function (result, item) {
@@ -53,13 +96,9 @@
     {#each cart as listCart}
       <li
         class="list-group-item d-flex justify-content-between align-items-start"
+        on:click={() => toggle(listCart)}
       >
         <div class="ms-2 me-auto">
-          <!-- <img
-            src="./assets/img/{listCart.product.category.name}/{listCart.product
-              .img}"
-            alt={listCart.product.name}
-          /><br /> -->
           <div class="fw-bold">{listCart.product.name}</div>
           Rp. {numberWithCommas(listCart.total_price)}
         </div>
@@ -87,6 +126,67 @@
   </div>
 </div>
 
+{#if cartDetail}
+  <div>
+    <Modal isOpen={open} {toggle}>
+      <ModalHeader {toggle}>
+        {cartDetail.product.name}
+        {" "}
+        <strong>
+          (Rp. {numberWithCommas(cartDetail.product.price)})
+        </strong>
+      </ModalHeader>
+      <ModalBody>
+        <!-- <form on:submit={handleSubmit}> -->
+        <p class="form-label">Total Harga :</p>
+        <p>
+          <strong> Rp. {numberWithCommas(totalPrice)}</strong>
+        </p>
+
+        <p class="form-label">Jumlah :</p>
+        <button class="btn btn-primary mx-1"
+          ><i class="fas fa-minus" on:click={minus} />
+        </button>
+        {quantity}
+        <button class="btn btn-primary mx-1"
+          ><i class="fas fa-plus" on:click={plus} /></button
+        >
+
+        <div class="my-3">
+          <label for="exampleFormControlTextarea1" class="form-label"
+            >Keterangan</label
+          >
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+            placeholder="Contoh : Frozen, Extra Topping"
+            on:change={(event) => changeHandler(event)}
+          />
+        </div>
+        <button class="btn btn-primary" on:click={handleSubmit}>Simpan</button>
+        <!-- </form> -->
+      </ModalBody>
+      <ModalFooter>
+        <Button color="danger" on:click={toggle}
+          ><i class="fas fa-trash me-2" />Hapus Pesanan</Button
+        >
+      </ModalFooter>
+    </Modal>
+  </div>
+{:else}
+  <div>
+    <Modal isOpen={open} {toggle}>
+      <ModalHeader {toggle}>Modal title</ModalHeader>
+      <ModalBody>Kosong</ModalBody>
+      <ModalFooter>
+        <Button color="primary" on:click={toggle}>Do Something</Button>
+        <Button color="secondary" on:click={toggle}>Cancel</Button>
+      </ModalFooter>
+    </Modal>
+  </div>
+{/if}
+
 <style>
   /* img {
     width: 50px;
@@ -103,5 +203,10 @@
   a:hover {
     text-decoration: none;
     color: #eee;
+  }
+
+  .fas {
+    width: 0.7em;
+    height: 0.7em;
   }
 </style>

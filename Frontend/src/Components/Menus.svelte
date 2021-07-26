@@ -3,6 +3,9 @@
   import { numberWithCommas } from "../utils/utils";
   import { API_URL } from "../utils/utils.js";
   import swal from "sweetalert";
+  import { setContext } from "svelte";
+
+  setContext("buah", "buah");
 
   let menus = [];
   let carts = [];
