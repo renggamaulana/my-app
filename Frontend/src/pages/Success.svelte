@@ -3,22 +3,22 @@
   import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
   import { API_URL } from "../utils/utils.js";
 
-  onMount(() => {
-    axios
-      .get(`${API_URL}carts`)
-      .then((res) => {
-        carts = res.data;
-        carts.map(function (item) {
-          return axios
-            .delete(`${API_URL}carts/{item.id}`)
-            .then((res) => console.log(res))
-            .catch((error) => console.log(error));
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
+  // onMount(() => {
+  //   axios
+  //     .get(`${API_URL}carts`)
+  //     .then((res) => {
+  //       carts = res.data;
+  //       carts.map(function (item) {
+  //         return axios
+  //           .delete(`${API_URL}carts/${item.id}`)
+  //           .then((res) => console.log(res))
+  //           .catch((error) => console.log(error));
+  //       });
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // });
 </script>
 
 <div class="mt-5 text-center">

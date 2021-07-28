@@ -20,7 +20,7 @@
 <!-- Akhir Navbar -->
 <!-- Main Page -->
 <div class="container-fluid">
-  <div class="row mt-2">
+  <div class="row mt-2 overflow-auto home">
     <div class="col-md-2">
       <Category on:messageCategory={handleCategory} />
     </div>
@@ -32,4 +32,13 @@
     </div>
   </div>
 </div>
+
 <!-- Akhir Main Page -->
+<style>
+  .home {
+    height: 530px;
+  }
+  .overflow-auto::-webkit-scrollbar {
+    display: none;
+  }
+</style>

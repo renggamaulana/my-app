@@ -1,9 +1,46 @@
 <script>
+  import axios from "axios";
+  import { API_URL } from "../utils/utils";
+  import { numberWithCommas } from "../utils/utils";
   // let display = block;
   let metodePembayaran = "";
 
   const handlePayment = (value) => {
     console.log(value);
+  };
+
+  let orders = [];
+  let total = 0;
+  let cart = 0;
+
+  axios
+    .get(`${API_URL}orders`)
+    .then((res) => {
+      orders = res.data[0]["menus"];
+      total = res.data[0]["total_pay"];
+      cart = res.data;
+      console.log(total);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  const checkoutOrder = () => {
+    axios
+      .get(`${API_URL}carts`)
+      .then((res) => {
+        cart = res.data;
+        cart.map(function (item) {
+          return axios
+            .delete(`${API_URL}carts/${item.id}`)
+            .then((res) => console.log(res))
+            .catch((error) => console.log(error));
+        });
+        console.log(cart);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 </script>
 
@@ -15,6 +52,7 @@
       <p class="lead" />
     </div>
 
+    <!-- Cart summary -->
     <div class="row g-5">
       <div class="col-md-5 col-lg-4 order-md-last">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -22,37 +60,31 @@
           <span class="badge bg-primary rounded-pill">3</span>
         </h4>
         <ul class="list-group mb-3">
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Product name</h6>
-              <small class="text-muted">Brief description</small>
-            </div>
-            <span class="text-muted">Rp.12</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Second product</h6>
-              <small class="text-muted">Brief description</small>
-            </div>
-            <span class="text-muted">Rp.8</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Third item</h6>
-              <small class="text-muted">Brief description</small>
-            </div>
-            <span class="text-muted">Rp.5</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between bg-light">
+          {#each orders as order}
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">{order.product.name}</h6>
+                <small class="text-muted"
+                  >Harga : Rp. {numberWithCommas(order.product.price)}</small
+                > <br />
+                <small class="text-muted">Jumlah : {order.quantity}</small>
+              </div>
+              <span class="text-muted"
+                >Rp. {numberWithCommas(order.total_price)}</span
+              >
+            </li>
+          {/each}
+
+          <!-- <li class="list-group-item d-flex justify-content-between bg-light">
             <div class="text-success">
               <h6 class="my-0">Promo code</h6>
               <small>EXAMPLECODE</small>
             </div>
             <span class="text-success">−Rp.5</span>
-          </li>
+          </li> -->
           <li class="list-group-item d-flex justify-content-between">
             <span>Total (IDR)</span>
-            <strong>Rp.72.000</strong>
+            <strong>Rp. {numberWithCommas(total)}</strong>
           </li>
         </ul>
 
@@ -297,8 +329,11 @@
 
           <hr class="my-4" />
 
-          <a href="/success" class="w-100 btn btn-primary btn-lg" type="submit"
-            >Bayar</a
+          <a
+            href="/success"
+            class="w-100 btn btn-primary btn-lg"
+            on:click={() => checkoutOrder()}
+            type="submit">Bayar</a
           >
         </form>
       </div>

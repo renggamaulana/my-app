@@ -1,5 +1,6 @@
 <script>
   import axios from "axios";
+  import swal from "sweetalert";
   import { API_URL } from "../utils/utils.js";
   import { numberWithCommas } from "../utils/utils";
   import { beforeUpdate } from "svelte";
@@ -26,18 +27,17 @@
     cartDetail = listCart;
     (quantity = listCart.quantity), (note = listCart.note);
     totalPrice = listCart.total_price;
-    console.log(listCart);
   };
 
   const plus = () => {
     quantity = quantity + 1;
-    totalPrice = cartDetail.product.price * (quantity + 1);
+    totalPrice = quantity * cartDetail.product.price;
   };
 
   const minus = () => {
     if (quantity !== 1) {
       quantity = quantity - 1;
-      totalPrice = cartDetail.product.price * (quantity - 1);
+      totalPrice = quantity * cartDetail.total_price;
     }
   };
 
@@ -45,16 +45,56 @@
     note = event.target.value;
   };
 
+  const handleClose = () => {
+    open = !open;
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    handleClose();
+    const data = {
+      quantity: quantity,
+      total_price: totalPrice,
+      product: cartDetail.product,
+      note: note,
+    };
 
+    axios
+      .put(`${API_URL}carts/${cartDetail.id}`, data)
+      .then((res) => {
+        swal({
+          title: "Update Pesanan!",
+          text: "Sukses Update Pesanan" + data.product.name,
+          icon: "success",
+          button: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     console.log(note);
   };
 
-  // const numbers = [75000, 34000];
-  // const sum = numbers.reduce(function (result, item) {
-  //   return result + item;
-  // }, 0);
+  const deleteOrder = (id) => {
+    handleClose();
+
+    axios
+      .delete(`${API_URL}carts/${id}`)
+      .then((res) => {
+        swal({
+          title: "Hapus Pesanan!",
+          text: "Sukses Hapus Pesanan" + cartDetail.product.name,
+          icon: "error",
+          button: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    console.log(note);
+  };
 
   beforeUpdate(() => {
     axios
@@ -92,20 +132,22 @@
   <h4>Keranjang</h4>
   <hr />
 
-  <ul class="list-group list-group-flush">
-    {#each cart as listCart}
-      <li
-        class="list-group-item d-flex justify-content-between align-items-start"
-        on:click={() => toggle(listCart)}
-      >
-        <div class="ms-2 me-auto">
-          <div class="fw-bold">{listCart.product.name}</div>
-          Rp. {numberWithCommas(listCart.total_price)}
-        </div>
-        <span class="badge bg-primary rounded-pill">{listCart.quantity}</span>
-      </li>
-    {/each}
-  </ul>
+  <div class="card overflow-auto result">
+    <ul class="list-group list-group-flush">
+      {#each cart as listCart}
+        <li
+          class="list-group-item d-flex justify-content-between align-items-start"
+          on:click={() => toggle(listCart)}
+        >
+          <div class="ms-2 me-auto">
+            <div class="fw-bold">{listCart.product.name}</div>
+            Rp. {numberWithCommas(listCart.total_price)}
+          </div>
+          <span class="badge bg-primary rounded-pill">{listCart.quantity}</span>
+        </li>
+      {/each}
+    </ul>
+  </div>
 </div>
 
 <div class="fixed-bottom">
@@ -160,6 +202,7 @@
             class="form-control"
             id="exampleFormControlTextarea1"
             rows="3"
+            name="keterangan"
             placeholder="Contoh : Frozen, Extra Topping"
             on:change={(event) => changeHandler(event)}
           />
@@ -168,7 +211,7 @@
         <!-- </form> -->
       </ModalBody>
       <ModalFooter>
-        <Button color="danger" on:click={toggle}
+        <Button color="danger" on:click={() => deleteOrder(cartDetail.id)}
           ><i class="fas fa-trash me-2" />Hapus Pesanan</Button
         >
       </ModalFooter>
@@ -208,5 +251,15 @@
   .fas {
     width: 0.7em;
     height: 0.7em;
+  }
+
+  @media only screen and (max-height: 1000px) {
+    .result {
+      height: 407px;
+    }
+  }
+
+  .overflow-auto::-webkit-scrollbar {
+    display: none;
   }
 </style>

@@ -3,9 +3,6 @@
   import { numberWithCommas } from "../utils/utils";
   import { API_URL } from "../utils/utils.js";
   import swal from "sweetalert";
-  import { setContext } from "svelte";
-
-  setContext("buah", "buah");
 
   let menus = [];
   let carts = [];
@@ -108,7 +105,7 @@
 <h4>Daftar Menu</h4>
 <hr />
 <div class="container">
-  <div class="row">
+  <div class="row overflow-auto menu">
     {#each menus as menu}
       <div
         class="col-xl-4 col-lg-3 col-md-6 col-lg-4 col-sm-6 col-6 my-3 shadow"
@@ -162,4 +159,10 @@
     height: 30vh;
     background: cover;
   } */
+  .menu {
+    height: 500px;
+  }
+  .overflow-auto::-webkit-scrollbar {
+    display: none;
+  }
 </style>
