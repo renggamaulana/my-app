@@ -4,125 +4,173 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+// use App\Http\Resources\ProductResource;
 
 class ProductController extends Controller
 {
-    function post(Request $request)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        $product = new Product;
-        $product->name = $request->name;
-        $product->price = $request->price;
-        $product->active = $request->active;
-        $product->img = $request->img;
-        $product->category_id = $request->category_id;
+        $products = Product::all();
+        $response =  [
+            'success' => true,
+            // 'data' => ProductResource::collection($products) //Jika menggunakan resource
+            'data' => $products,
+            'message' => "Products Successfully Retrieved"
+        ];
+        return response()->json($response, 200);
+    }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $input = $request->all();
+
+        $validator = Validator::make($input, [
+            'name' => 'required',
+            'price' => 'required',
+            'img' => 'required',
+            'category_id' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            $response =  [
+                'success' => true,
+                'message' => $validator->errors()
+            ];
+
+            return response()->json($response, 403);
+        }
+
+        $product = Product::create($input);
+
+        $response =  [
+            'success' => true,
+            'data' => $product,
+            'message' => "Products Successfully Created"
+        ];
+
+        return response()->json($response, 200);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $product = Product::find($id);
+
+        if (is_null($product)) {
+            $response =  [
+                'success' => false,
+                'message' => "Products Not Found."
+            ];
+
+            return response()->json($response, 403);
+        }
+
+        $response =  [
+            'success' => true,
+            'data' => $product,
+            'message' => "Product Successfully Retrieved"
+        ];
+
+        return response()->json($response, 200);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Product $product)
+    {
+        $input = $request->all();
+
+        $validator = Validator::make($input, [
+            'name' => 'required',
+            'price' => 'required',
+            'img' => 'required',
+            'category_id' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            $response =  [
+                'success' => true,
+                'message' => $validator->errors()
+            ];
+
+            return response()->json($response, 403);
+        }
+
+        $product->name = $input['name'];
+        $product->price = $input['price'];
+        // $product->active = $input['active'];
+        $product->img = $input['img'];
+        $product->category_id = $input['category_id'];
 
         $product->save();
 
-        return response()->json(
-            [
-                "message" => "Success",
-                "data" => $product
-            ]
-        );
+        $response =  [
+            'success' => true,
+            'data' => $product,
+            'message' => "Product Successfully Updated"
+        ];
+
+        return response()->json($response, 200);
     }
 
-    function get(Request $request)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Product $product)
     {
-        // dd($request);
+        $product->delete();
 
-        if ($request->category_name) {
-            $data = DB::table('products as p')->join('categories as c', 'p.category_id', '=', 'c.id')
-                ->select('p.id', 'p.name', 'p.price', 'p.active', 'p.img', 'p.category_id', 'c.name as category_name')
-                ->where('c.name', $request->category_name)
-                ->get();
-        } else {
-            $data = DB::table('products as p')->join('categories as c', 'p.category_id', '=', 'c.id')
-                ->select('p.id', 'p.name', 'p.price', 'p.active', 'p.img', 'p.category_id', 'c.name as category_name')
-                ->get();
-        }
+        $response =  [
+            'success' => true,
+            'data' => [],
+            'message' => "Product Successfully Deleted"
+        ];
 
-        // $data = Product::all();
-
-        $dataResult = [];
-
-        foreach ($data as $i => $value) {
-            $dataResult[$i] = [
-                'id'    => $value->id,
-                'name'    => $value->name,
-                'price'    => $value->price,
-                'active'    => $value->active,
-                'img'    => $value->img,
-                'category'  => [
-                    'id' => $value->category_id,
-                    'name' => $value->category_name
-                ]
-            ];
-        }
-
-
-        return response()->json(
-            [
-                "message" => "Success!",
-                "data" => $dataResult
-            ]
-        );
-    }
-    function getById($id)
-    {
-        $data = Product::where('id', $id)->get();
-
-        return response()->json(
-            [
-                "message" => "Success!",
-                "data" => $data
-            ]
-        );
-    }
-
-
-    function put($id, Request $request)
-    {
-        $product = Product::where('id', $id)->first();
-        if ($product) {
-            $product->name = $request->name ? $request->name : $product->name;
-            $product->price = $request->price ? $request->price : $product->price;
-            $product->quantity = $request->quantity ? $request->quantity : $product->quantity;
-            $product->active = $request->active ? $request->active : $product->active;
-
-            $product->save();
-            return response()->json(
-                [
-                    "message" => "PUT Method Success! ",
-                    "data" => $product
-                ]
-            );
-        }
-        return response()->json(
-            [
-                "message" => "Product with id " . $id . " is not found."
-            ],
-            400
-        );
-    }
-
-    function delete($id) //saran menggunakan soft deleted
-    {
-        $product = Product::where('id', $id)->first();
-        if ($product) {
-            $product->delete();
-            return response()->json(
-                [
-                    "message" => "DELETE Product " . $id . " Success!"
-                ]
-            );
-        }
-        return response()->json(
-            [
-                "message" => "Product with id " . $id . " is not found."
-            ],
-            400
-        );
+        return response()->json($response, 200);
     }
 }

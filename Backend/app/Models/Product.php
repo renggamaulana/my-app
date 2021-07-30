@@ -9,5 +9,6 @@ class Product extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $fillable = ['name', 'price', 'active', 'img', 'category_id'];
     protected $hidden = ['created_at', 'updated_at'];
 }
