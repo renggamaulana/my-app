@@ -2,6 +2,20 @@
   import NavAdmin from "../components/Admin/Nav.svelte";
   import MenuAdmin from "../components/Admin/Menu.svelte";
   import FooterAdmin from "../components/Admin/Footer.svelte";
+  import { API_URL, numberWithCommas } from "../utils/utils";
+  import axios from "axios";
+
+  let products = [];
+
+  axios
+    .get(`${API_URL}products`)
+    .then((res) => {
+      products = res.data;
+      console.log(products);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 </script>
 
 <NavAdmin />
@@ -49,25 +63,28 @@
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
+                {#each products as product, i}
+                  <tbody>
+                    <tr>
+                      <th scope="row">{i + 1}</th>
+                      <td>{product.name}</td>
+                      <td>Rp. {numberWithCommas(product.price)}</td>
+                      <td
+                        ><img
+                          src="./assets/img/{product.category
+                            .name}/{product.img}"
+                          class="card-img-top"
+                          width="20"
+                          alt="..."
+                        /></td
+                      >
+                      <td>
+                        <span class="badge bg-success">Edit</span>
+                        <span class="badge bg-danger">Hapus</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                {/each}
               </table>
             </div>
             <!-- /.card-body -->
@@ -82,15 +99,6 @@
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<footer class="main-footer">
-  <div class="float-right d-none d-sm-block">
-    <b>Version</b> 3.1.0
-  </div>
-  <strong
-    >Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a
-    >.</strong
-  > All rights reserved.
-</footer>
 
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
@@ -100,3 +108,10 @@
 
 <!-- ./wrapper -->
 <FooterAdmin />
+
+<style>
+  .card-img-top {
+    height: 50px;
+    width: 50px;
+  }
+</style>

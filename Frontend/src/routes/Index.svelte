@@ -11,6 +11,7 @@
   import Profile from "../pages/Profile.svelte";
   import Orders from "../pages/Orders.svelte";
   import Products from "../pages/Products.svelte";
+  import Address from "../pages/Address.svelte";
 
   let page;
 
@@ -25,6 +26,7 @@
   router("/profile", () => (page = Profile));
   router("/orders", () => (page = Orders));
   router("/products", () => (page = Products));
+  router("/address", () => (page = Address));
 
   router.start();
 </script>

@@ -12,6 +12,19 @@
   let orders = [];
   let total = 0;
   let cart = 0;
+  let jumlahCart = 0;
+
+  // Jumlah cart is  axios
+  axios
+    .get(`${API_URL}carts`)
+    .then((res) => {
+      jumlahCart = res.data.length;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  //
 
   axios
     .get(`${API_URL}orders`)
@@ -19,7 +32,7 @@
       orders = res.data[0]["menus"];
       total = res.data[0]["total_pay"];
       cart = res.data;
-      console.log(total);
+      // console.log(total);
     })
     .catch((err) => {
       console.log(err);
@@ -57,7 +70,7 @@
       <div class="col-md-5 col-lg-4 order-md-last">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-primary">Ringkasan Belanja</span>
-          <span class="badge bg-primary rounded-pill">3</span>
+          <span class="badge bg-primary rounded-pill">{jumlahCart}</span>
         </h4>
         <ul class="list-group mb-3">
           {#each orders as order}

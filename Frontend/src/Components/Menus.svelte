@@ -27,8 +27,6 @@
     .then((res) => {
       menus = res.data;
       console.log(res.data);
-      // menus = res.data.data; //response menggunakan laravel api
-      // console.log(1, res.data.data);
     })
     .catch((err) => {
       console.log(err);
