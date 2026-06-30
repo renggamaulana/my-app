@@ -6,7 +6,7 @@
 
   const API_URL = "http://localhost:8000/api";
 
-  let email = "";
+  let username = "";
   let password = "";
   let loading = false;
   let errors = {};
@@ -17,7 +17,7 @@
 
     try {
       const response = await axios.post(`${API_URL}/login`, {
-        email,
+        username,
         password,
       });
 
@@ -54,7 +54,7 @@
         Swal.fire({
           icon: "error",
           title: "Kredensial Salah",
-          text: "Email atau kata sandi yang Anda masukkan salah.",
+          text: "Username atau kata sandi yang Anda masukkan salah.",
           confirmButtonColor: "#dc3545",
         });
       } else {
@@ -80,20 +80,20 @@
 
     <form on:submit|preventDefault={handleLogin}>
       <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
+        <label for="username" class="form-label">Username</label>
         <div class="input-group">
-          <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+          <span class="input-group-text"><i class="bi bi-person"></i></span>
           <input
-            type="email"
-            id="email"
-            class="form-control {errors.email ? 'is-invalid' : ''}"
-            placeholder="nama@email.com"
-            bind:value={email}
+            type="text"
+            id="username"
+            class="form-control {errors.username ? 'is-invalid' : ''}"
+            placeholder="Masukkan username Anda"
+            bind:value={username}
             required
           />
         </div>
-        {#if errors.email}
-          <div class="invalid-feedback d-block">{errors.email[0]}</div>
+        {#if errors.username}
+          <div class="invalid-feedback d-block">{errors.username[0]}</div>
         {/if}
       </div>
 

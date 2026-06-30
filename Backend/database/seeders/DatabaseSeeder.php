@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
             ['email' => 'admin@corndogalle.com'],
             [
                 'name' => 'Admin Alle',
-                'password' => Hash::make('password123'),
+                'username' => 'admin',
+                'password' => Hash::make('admin123'),
                 'role' => 'admin',
             ]
         );
@@ -34,7 +35,8 @@ class DatabaseSeeder extends Seeder
         $customer = User::updateOrCreate(
             ['email' => 'user@corndogalle.com'],
             [
-                'name' => 'Rudyansyah',
+                'name' => 'Budi Santoso',
+                'username' => 'user',
                 'password' => Hash::make('password123'),
                 'role' => 'user',
             ]
@@ -42,9 +44,10 @@ class DatabaseSeeder extends Seeder
 
         // Another customer
         $customer2 = User::updateOrCreate(
-            ['email' => 'rena.karlina25@gmail.com'],
+            ['email' => 'ali@gmail.com'],
             [
-                'name' => 'Rena Karlina',
+                'name' => 'Ali bin Abu',
+                'username' => 'ali',
                 'password' => Hash::make('password123'),
                 'role' => 'user',
             ]
@@ -66,7 +69,7 @@ class DatabaseSeeder extends Seeder
             ['id' => 1],
             [
                 'bank_name' => 'BCA',
-                'account_name' => 'Rena Karlina',
+                'account_name' => 'John Doe',
                 'account_number' => '8889767817',
             ]
         );
@@ -126,15 +129,14 @@ class DatabaseSeeder extends Seeder
         );
 
         // 5. Seed Mock Orders
-        // Order 1: Rena Karlina (Invoice 181100)
+        // Order 1: John Doe (Invoice 181100)
         $order1 = Order::create([
             'user_id' => $customer2->id,
-            'customer_name' => 'Rena Karlina',
-            'table_number' => 'Meja 3',
-            'first_name' => 'Rena',
-            'last_name' => 'Karlina',
+            'customer_name' => 'John Doe',
+            'first_name' => 'John',
+            'last_name' => 'Doe',
             'phone' => '(+62) 895-3653-05896',
-            'email' => 'rena.karlina25@gmail.com',
+            'email' => 'john.doe@gmail.com',
             'address' => 'Jl. Cilandak Barat No. 45',
             'alt_address' => null,
             'province' => 'DKI Jakarta',
@@ -172,15 +174,14 @@ class DatabaseSeeder extends Seeder
             'notes' => null,
         ]);
 
-        // Order 2: Rudyansyah (Invoice 181166)
+        // Order 2: Budi Santoso (Invoice 181166)
         $order2 = Order::create([
             'user_id' => $customer->id,
-            'customer_name' => 'Rudyansyah',
-            'table_number' => 'Meja 5',
-            'first_name' => 'Rudy',
-            'last_name' => 'ansyah',
+            'customer_name' => 'Budi Santoso',
+            'first_name' => 'Budi',
+            'last_name' => 'Santoso',
             'phone' => '(+62) 539-1037-7331',
-            'email' => 'rudyansyah16@gmail.com',
+            'email' => 'budi.santoso@gmail.com',
             'address' => 'Jl. Sudirman No. 32',
             'alt_address' => null,
             'province' => 'DKI Jakarta',
@@ -210,15 +211,14 @@ class DatabaseSeeder extends Seeder
             'notes' => null,
         ]);
 
-        // Order 3: Rudyansyah (Invoice 007612)
+        // Order 3: Budi Santoso (Invoice 007612)
         $order3 = Order::create([
             'user_id' => $customer->id,
-            'customer_name' => 'Rudyansyah',
-            'table_number' => 'Meja 1',
-            'first_name' => 'Rudy',
-            'last_name' => 'ansyah',
+            'customer_name' => 'Budi Santoso',
+            'first_name' => 'Budi',
+            'last_name' => 'Santoso',
             'phone' => '(+62) 539-1037-7331',
-            'email' => 'rudyansyah14@gmail.com',
+            'email' => 'budi.santoso@gmail.com',
             'address' => 'Jl. Sindang Barang No 22, Kecamatan Bogor Barat',
             'alt_address' => null,
             'province' => 'Jawa Barat',

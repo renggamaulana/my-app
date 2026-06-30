@@ -6,6 +6,7 @@
   const API_URL = "http://localhost:8000/api";
 
   let name = "";
+  let username = "";
   let email = "";
   let password = "";
   let password_confirmation = "";
@@ -19,6 +20,7 @@
     try {
       const response = await axios.post(`${API_URL}/register`, {
         name,
+        username,
         email,
         password,
         password_confirmation,
@@ -79,6 +81,24 @@
         </div>
         {#if errors.name}
           <div class="invalid-feedback d-block">{errors.name[0]}</div>
+        {/if}
+      </div>
+
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+          <input
+            type="text"
+            id="username"
+            class="form-control {errors.username ? 'is-invalid' : ''}"
+            placeholder="Pilih username unik"
+            bind:value={username}
+            required
+          />
+        </div>
+        {#if errors.username}
+          <div class="invalid-feedback d-block">{errors.username[0]}</div>
         {/if}
       </div>
 

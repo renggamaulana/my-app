@@ -11,7 +11,6 @@ class Order extends Model
     protected $fillable = [
         'user_id',
         'customer_name',
-        'table_number',
         
         // Billing Info
         'first_name',
