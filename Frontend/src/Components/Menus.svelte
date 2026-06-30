@@ -10,4 +10,3 @@
     <h3>{menu.name}</h3>
   {/each}
 </div>
-</div>
